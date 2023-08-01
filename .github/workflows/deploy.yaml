@@ -16,8 +16,8 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@master
     
-    - name: Restore dependencies
-      run: dotnet restore
+    #- name: Restore dependencies
+    #  run: dotnet restore
     
     - run: dotnet run --project ./kennyjeffris.github.io/kennyjeffris.github.io.csproj -- deploy
       env:

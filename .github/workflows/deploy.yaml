@@ -19,7 +19,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     
-    - run: dotnet run -- deploy ./kennyjeffris.github.io/kennyjeffris.github.io.csproj
+    - run: dotnet run --project ./kennyjeffris.github.io/kennyjeffris.github.io.csproj -- deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

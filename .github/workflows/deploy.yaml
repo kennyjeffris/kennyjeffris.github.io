@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-pages-artifact@v1
       with:
         # Upload output only
-        path: './output'
+        path: './kennyjeffris.github.io/output'
 
     - name: Deploy to GitHub Pages
       id: deployment

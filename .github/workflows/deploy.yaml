@@ -20,7 +20,7 @@ jobs:
     #  run: dotnet restore
     
     - name: Build and Run
-    - run: dotnet run --project ./kennyjeffris.github.io/kennyjeffris.github.io.csproj --deploy-bootstrapper GitHubPages --output ./kennyjeffris.github.io/output
+      run: dotnet run --project ./kennyjeffris.github.io/kennyjeffris.github.io.csproj --deploy-bootstrapper GitHubPages --output ./kennyjeffris.github.io/output
     
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@master

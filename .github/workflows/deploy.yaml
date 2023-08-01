@@ -8,11 +8,18 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@master
+    - name: Checkout repository
+      uses: actions/checkout@master
       with:
         submodules: recursive
-    - uses: actions/setup-dotnet@master
-    - run: dotnet run -- deploy
+        
+    - name: Setup .NET
+      uses: actions/setup-dotnet@master
+    
+    - name: Restore dependencies
+      run: dotnet restore
+    
+    - run: dotnet run -- deploy ./kennyjeffris.github.io/kennyjeffris.github.io.csproj
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

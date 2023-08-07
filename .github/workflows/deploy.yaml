@@ -33,11 +33,11 @@ jobs:
     
     # Publishes Blazor project to the release-folder
     - name: Publish .NET Core Project
-      run: dotnet publish kennyjeffris.github.io/src/src.csproj -c:Release -p:GHPages=true -o kennyjeffris.github.io/dist/_wwwroot --nologo
+      run: dotnet publish kennyjeffris.github.io/src/src.csproj -c:Release -p:GHPages=true -o build --nologo
 
     - name: Deploy to GH Pages 🚀
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: kennyjeffris.github.io/dist/_wwwroot
+        publish_dir: build/wwwroot
 

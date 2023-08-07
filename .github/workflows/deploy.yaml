@@ -41,7 +41,7 @@ jobs:
       uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: gh-pages # Branch to deploy to
-        folder: _wwwroot # Folder containing the built app
+        folder: kennyjeffris.github.io/dist/_wwwroot # Folder containing the built app
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

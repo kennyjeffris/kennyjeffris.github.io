@@ -17,7 +17,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: Checkout repository
       uses: actions/checkout@master
@@ -28,10 +28,19 @@ jobs:
       uses: actions/setup-dotnet@master
       with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Install .NET WASM Build Tools
+      run: dotnet workload install wasm-tools
     
     #- name: Restore dependencies
     #  run: dotnet restore
     
-    - name: Build and Run
-      run: dotnet run --project ./kennyjeffris.github.io/kennyjeffris.github.io.csproj --deploy
+    # Publishes Blazor project to the release-folder
+    - name: Publish .NET Core Project
+      run: dotnet publish src/src.csproj -c:Release -p:GHPages=true -o dist/Web --nologo
+    - name: Commit wwwroot to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      env:
+        FOLDER: dist/Web/wwwroot
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
 

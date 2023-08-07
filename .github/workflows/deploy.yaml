@@ -32,7 +32,7 @@ jobs:
       run: dotnet workload install wasm-tools
     
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore kennyjeffris.github.io/kennyjeffris.github.io.sln
     
     # Publishes Blazor project to the release-folder
     - name: Publish .NET Core Project

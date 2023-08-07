@@ -35,9 +35,16 @@ jobs:
     - name: Publish .NET Core Project
       run: dotnet publish kennyjeffris.github.io/src/src.csproj -c:Release -p:GHPages=true -o build --nologo
 
-    - name: Deploy to GH Pages 🚀
-      uses: peaceiris/actions-gh-pages@v3
+    #- name: Deploy to GH Pages 🚀
+    #  uses: peaceiris/actions-gh-pages@v3
+    #  with:
+    #    github_token: ${{ secrets.GITHUB_TOKEN }}
+    #    publish_dir: ./build/wwwroot
+
+    - name: Deploy to Github Pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build/wwwroot
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: build/wwwroot
 

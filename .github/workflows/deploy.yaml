@@ -1,3 +1,5 @@
+# Primary inspiration:
+# https://www.davidguida.net/how-to-deploy-blazor-webassembly-on-github-pages-using-github-actions/
 name: Deploy Site
 on: 
   push:
@@ -16,32 +18,26 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-    - name: Checkout repository
+    - name: Checkout repository ✔️
       uses: actions/checkout@master
       with:
         submodules: recursive
         
-    - name: Setup .NET
+    - name: Setup .NET ⚙️
       uses: actions/setup-dotnet@master
       with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
     - name: Install .NET WASM Build Tools
       run: dotnet workload install wasm-tools
     
-    - name: Restore dependencies
+    - name: Restore dependencies ♻️
       run: dotnet restore kennyjeffris.github.io/kennyjeffris.github.io.sln
     
     # Publishes Blazor project to the release-folder
-    - name: Publish .NET Core Project
+    - name: Publish .NET Core Project 📤
       run: dotnet publish kennyjeffris.github.io/src/src.csproj -c:Release -p:GHPages=true -o build --nologo
 
-    #- name: Deploy to GH Pages 🚀
-    #  uses: peaceiris/actions-gh-pages@v3
-    #  with:
-    #    github_token: ${{ secrets.GITHUB_TOKEN }}
-    #    publish_dir: ./build/wwwroot
-
-    - name: Deploy to Github Pages
+    - name: Deploy to Github Pages 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -35,7 +35,7 @@ jobs:
     
     # Publishes Blazor project to the release-folder
     - name: Publish .NET Core Project 📤
-      run: dotnet publish kennyjeffris.github.io/src/src.csproj -c:Release -p:GHPages=true -o build --nologo
+      run: dotnet publish kennyjeffris.github.io/portfolio/portfolio.csproj -c:Release -p:GHPages=true -o build --nologo
 
     - name: Deploy to Github Pages 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
